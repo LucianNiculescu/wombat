@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNumeralsLog extends Migration
+class CreateConversions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateNumeralsLog extends Migration
      */
     public function up()
     {
-        Schema::create('numerals_log', function (Blueprint $table) {
+        Schema::create('conversions', function (Blueprint $table) {
             $table->id();
+            $table->integer('input');
+            $table->integer('output');
+
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateNumeralsLog extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('numerals_log');
+        Schema::dropIfExists('conversions');
     }
 }
