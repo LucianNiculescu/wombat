@@ -20,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('checkToken')->group(function () {
     Route::post('/convertArabicToRoman', 'ApiController@convertArabicToRoman');
     Route::get('/getRecentlyConversions', 'ApiController@getRecentlyConversions');
+    Route::get('/getTop10Conversions', 'ApiController@getTop10Conversions');
 });

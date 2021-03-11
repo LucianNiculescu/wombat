@@ -56,10 +56,34 @@ class ApiController extends BaseController
      */
     public function getRecentlyConversions():array {
         //Retrieve the latest 10 records
-        $conversions = Conversion::orderBy('updated_at', 'DESC')->simplePaginate(10);
+        $conversions = Conversion::orderBy('updated_at', 'desc')->simplePaginate(10);
         //Validation if we don't have any conversions
         if($conversions->count() < 1)
             return $this->result;
+        //Set the successful result and return it
+        $this->result['success']    = true;
+        $this->result['data']       = $conversions;
+
+        return $this->result;
+
+    }
+
+    /**
+     * Gets the top 10 conversions
+     *
+     * @return array
+     */
+    public function getTop10Conversions():array {
+        //Retrieve the latest 10 records
+        $conversions = Conversion::selectRaw('count(*) as total, input')
+            ->groupBy('input')
+            ->orderBy('total', 'desc')
+            ->limit(10)
+            ->get();
+        //Validation if we don't have any conversions
+        if($conversions->count() < 1)
+            return $this->result;
+
         //Set the successful result and return it
         $this->result['success']    = true;
         $this->result['data']       = $conversions;
