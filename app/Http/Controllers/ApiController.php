@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\ArabicToRoman;
+use App\Helpers\McNumberFace;
 use App\Models\Conversion;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -33,7 +33,7 @@ class ApiController extends BaseController
         //Convert the input to int ( for the strings that include numbers )
         $arabicNumber = (int) $arabicNumber;
 
-        $romanNumber    = new ArabicToRoman();
+        $romanNumber    = new McNumberFace();
         $romanNumber    = $romanNumber->convert($arabicNumber);
         $conversion     = '';
         //Check if we have a string ( that means it's a valid Roman number )
