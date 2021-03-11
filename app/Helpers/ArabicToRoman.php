@@ -1,10 +1,10 @@
 <?php
+
 namespace App\Helpers;
 
 /**
  * Class ArabicToRoman
  * Used to generate roman numbers from a given arabic number between 1 and 3999
- *
  *
  * NOTICE: because there's not a consensus on what constitutes a valid Roman number, numbers like 1999 can be both represented as 'MIM', 'MDCCCCLXXXXVIIII' or 'MCMXCIX'
  */
@@ -30,7 +30,8 @@ class ArabicToRoman {
     ];
 
     /**
-     * Static function that will generate a roman number from a given arabic integer
+     * Generates a roman number from a given arabic integer
+     *
      * @param int $number
      * @return bool|string
      */
@@ -56,7 +57,7 @@ class ArabicToRoman {
     }
 
     /**
-     * Private function that will check if the number is between 0 and 3999 and if it's integer
+     * Checks if the number is between 0 and 3999 and if it's integer
      *
      * @param int $number
      * @return boolean

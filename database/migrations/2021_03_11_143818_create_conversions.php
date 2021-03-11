@@ -16,7 +16,7 @@ class CreateConversions extends Migration
         Schema::create('conversions', function (Blueprint $table) {
             $table->id();
             $table->integer('input');
-            $table->integer('output');
+            $table->string('output');
 
             $table->timestamps();
         });

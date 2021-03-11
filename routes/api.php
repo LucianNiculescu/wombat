@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 //});
 //Check the token before we reach the ApiController
 Route::middleware('checkToken')->group(function () {
-    Route::post('/test', 'ApiController@test');
+    Route::post('/convertArabicToRoman', 'ApiController@convertArabicToRoman');
 });
