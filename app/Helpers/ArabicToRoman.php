@@ -8,7 +8,7 @@ namespace App\Helpers;
  *
  * NOTICE: because there's not a consensus on what constitutes a valid Roman number, numbers like 1999 can be both represented as 'MIM', 'MDCCCCLXXXXVIIII' or 'MCMXCIX'
  */
-class ArabicToRoman {
+class ArabicToRoman implements McNumberFace {
     /*
      * Properties of the class
      * For the moment we are using only one static property
