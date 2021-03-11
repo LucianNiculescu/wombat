@@ -74,8 +74,8 @@ class ApiController extends BaseController
      * @return array
      */
     public function getTop10Conversions():array {
-        //Retrieve the latest 10 records
-        $conversions = Conversion::selectRaw('count(*) as total, input')
+        //Retrieve the top 10 conversions
+        $conversions = Conversion::selectRaw('count(*) as total, input, output, updated_at')
             ->groupBy('input')
             ->orderBy('total', 'desc')
             ->limit(10)
@@ -89,6 +89,5 @@ class ApiController extends BaseController
         $this->result['data']       = $conversions;
 
         return $this->result;
-
     }
 }
