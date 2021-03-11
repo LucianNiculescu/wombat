@@ -30,6 +30,8 @@ class ApiController extends BaseController
             $this->result['errors'] = 'Please supply a valid parameter: arabic_number';
             return $this->result;
         }
+        //Convert the input to int ( for the strings that include numbers )
+        $arabicNumber = (int) $arabicNumber;
 
         $romanNumber    = new ArabicToRoman();
         $romanNumber    = $romanNumber->convert($arabicNumber);
@@ -46,5 +48,23 @@ class ApiController extends BaseController
         $this->result['data']       = $conversion;
 
         return $this->result;
+    }
+
+    /**
+     * Gets the most recent conversions with a simple pagination
+     * @return array
+     */
+    public function getRecentlyConversions():array {
+        //Retrieve the latest 10 records
+        $conversions = Conversion::orderBy('updated_at', 'DESC')->simplePaginate(10);
+        //Validation if we don't have any conversions
+        if($conversions->count() < 1)
+            return $this->result;
+        //Set the successful result and return it
+        $this->result['success']    = true;
+        $this->result['data']       = $conversions;
+
+        return $this->result;
+
     }
 }
